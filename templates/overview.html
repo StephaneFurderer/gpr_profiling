@@ -1,0 +1,108 @@
+<div class="row variablerow">
+    <div class="col-md-6 namecol">
+        <p class="h4">Dataset Info</p>
+        <table class="stats" style="margin-left: 1em;">
+            <tbody>
+            <tr>
+                <th>Number of variables</th>
+                <td>{{ values['nvar'] }} </td>
+            </tr>
+            <tr>
+                <th>Number of observations</th>
+                <td>{{ values['n'] }} </td>
+            </tr>
+            <tr>
+                <th>Total Missing (%)</th>
+                <td>{{ values['total_missing'] }} </td>
+            </tr>
+            <tr>
+                <th>Total size in memory</th>
+                <td>{{ values['memsize'] }} </td>
+            </tr>
+            <tr>
+                <th>Average record size in memory</th>
+                <td>{{ values['recordsize'] }} </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    <div class="col-md-6 namecol">
+        <p class="h4">Variables Types</p>
+        <table class="stats" style="margin-left: 1em;">
+            <tbody>
+            <tr>
+                <th>Numeric</th>
+                <td>{{ values['NUM'] }} </td>
+            </tr>
+            <tr>
+                <th>Categorical</th>
+                <td>{{ values['CAT'] }} </td>
+            </tr>
+            <tr>
+                <th>Boolean</th>
+                <td>{{ values['BOOL'] }} </td>
+            </tr>
+            <tr>
+                <th>Date</th>
+                <td>{{ values['DATE'] }} </td>
+            </tr>
+            <tr>
+                <th>Text (Unique)</th>
+                <td>{{ values['UNIQUE'] }} </td>
+            </tr>
+            <tr>
+                <th>Rejected</th>
+                <td>{{ values['REJECTED'] }} </td>
+            </tr>
+            <tr>
+                <th>Unsupported</th>
+                <td>{{ values['UNSUPPORTED'] }} </td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+    {% if messages_gpr %}
+    <div class="col-md-12" style="padding-left: 1em;">
+
+        <p class="h4">GPR Messages</p>
+        <ul class="list-unstyled">{{ messages_gpr }} </ul>
+    </div>
+    {% endif %}
+    {% if gpr_values %}
+    <div class="col-md-12" style="padding-left: 1em;">
+        <p class="h4" style="margin-bottom: 1em;">GPR Metrics</p>
+        <table class="statsLine" style="margin-bottom: 1em;">
+            <tbody>
+            {{gpr_values}}
+            </tbody>
+        </table>
+    </div>
+    {% endif %}
+
+    {% if value_descs %}
+    <div class="col-md-12" style="padding-left: 1em";>
+        <div class="panel panel-default">
+            <div class="panel-heading">
+                <h4 class="panel-title">
+                    <a data-toggle="collapse" href="#collapse1">Metric Descriptions</a>
+                </h4>
+            </div>
+            <div id="collapse1" class="panel-collapse collapse">
+                <table class="stats" style="margin-left: 1em;">
+                    <tbody>
+                    {{value_descs}}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    {% endif %}
+
+    {% if messages %}
+    <div class="col-md-12" style="padding-left: 1em;">
+        
+        <p class="h4">Variable Warnings</p>
+        <ul class="list-unstyled">{{ messages }} </ul>
+    </div>
+    {% endif %}
+</div>
